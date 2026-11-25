@@ -1,0 +1,120 @@
+name: Deploy to Hostinger
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Build & Deploy via SSH
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check required Hostinger secrets
+        id: check_secrets
+        env:
+          SSH_HOST: ${{ secrets.HOSTINGER_SSH_HOST }}
+          SSH_USER: ${{ secrets.HOSTINGER_SSH_USER }}
+          SSH_KEY: ${{ secrets.HOSTINGER_SSH_KEY }}
+          APP_ENV_FILE: ${{ secrets.HOSTINGER_ENV }}
+        run: |
+          if [ -z "$SSH_HOST" ] || [ -z "$SSH_USER" ] || [ -z "$SSH_KEY" ] || [ -z "$APP_ENV_FILE" ]; then
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::Hostinger secrets are not configured yet. Add HOSTINGER_SSH_HOST, HOSTINGER_SSH_USER, HOSTINGER_SSH_KEY, and HOSTINGER_ENV in Repository Settings -> Secrets and variables -> Actions, then click 'Run workflow'."
+          else
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Set up PHP 8.3
+        if: steps.check_secrets.outputs.configured == 'true'
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: mbstring, xml, ctype, json, bcmath, pdo, pdo_mysql
+          coverage: none
+
+      - name: Install production Composer dependencies
+        if: steps.check_secrets.outputs.configured == 'true'
+        run: |
+          rm -rf benew-app
+          composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist
+
+      - name: Configure SSH key
+        if: steps.check_secrets.outputs.configured == 'true'
+        env:
+          SSH_KEY: ${{ secrets.HOSTINGER_SSH_KEY }}
+          SSH_HOST: ${{ secrets.HOSTINGER_SSH_HOST }}
+        run: |
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -p 65002 -H "$SSH_HOST" >> ~/.ssh/known_hosts
+
+      - name: Sync files & run Laravel migrations on Hostinger
+        if: steps.check_secrets.outputs.configured == 'true'
+        env:
+          SSH_HOST: ${{ secrets.HOSTINGER_SSH_HOST }}
+          SSH_USER: ${{ secrets.HOSTINGER_SSH_USER }}
+          APP_ENV_FILE: ${{ secrets.HOSTINGER_ENV }}
+        run: |
+          SSH_OPTS="-i ~/.ssh/deploy_key -p 65002 -o StrictHostKeyChecking=yes"
+
+          TARGET_DIR=$(ssh $SSH_OPTS "$SSH_USER@$SSH_HOST" '
+            if [ -d "$HOME/domains/benew.threedigitsoftware.com/public_html" ]; then
+              echo "$HOME/domains/benew.threedigitsoftware.com/public_html"
+            elif [ -d "$HOME/domains/threedigitsoftware.com/public_html/benew" ]; then
+              echo "$HOME/domains/threedigitsoftware.com/public_html/benew"
+            else
+              FOUND=$(find "$HOME/domains" -maxdepth 3 -type d -iname "*benew*" 2>/dev/null | head -n 1)
+              echo "${FOUND:-$HOME/domains/threedigitsoftware.com/public_html/benew}"
+            fi
+          ')
+
+          echo "Deploying to Hostinger directory: $TARGET_DIR"
+          ssh $SSH_OPTS "$SSH_USER@$SSH_HOST" "mkdir -p '$TARGET_DIR'"
+
+          rsync -az --delete \
+            -e "ssh $SSH_OPTS" \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='.env' \
+            --exclude='deploy-hostinger' \
+            --exclude='database/database.sqlite' \
+            --exclude='public/storage' \
+            --exclude='storage/app/public/*' \
+            --exclude='storage/logs/*' \
+            --exclude='storage/framework/sessions/*' \
+            --exclude='storage/framework/views/*' \
+            --exclude='storage/framework/cache/data/*' \
+            ./ "$SSH_USER@$SSH_HOST:$TARGET_DIR/"
+
+          printf '%s\n' "$APP_ENV_FILE" | ssh $SSH_OPTS "$SSH_USER@$SSH_HOST" "cat > '$TARGET_DIR/.env' && chmod 600 '$TARGET_DIR/.env'"
+
+          ssh $SSH_OPTS "$SSH_USER@$SSH_HOST" "
+            set -e
+            cd '$TARGET_DIR'
+            mkdir -p storage/app/public storage/framework/cache/data storage/framework/sessions storage/framework/views storage/logs bootstrap/cache
+            chmod -R 775 storage bootstrap/cache
+            rm -rf public/storage
+            php artisan storage:link
+            php artisan migrate --seed --force
+            php artisan optimize:clear
+            php artisan optimize
+          "
+
+      - name: Verify live HTTPS response
+        if: steps.check_secrets.outputs.configured == 'true'
+        run: |
+          sleep 3
+          HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://benew.threedigitsoftware.com/)
+          echo "Live HTTPS status: $HTTP_STATUS"
+          if [ "$HTTP_STATUS" != "200" ]; then
+            echo "::error::Expected HTTP 200 from https://benew.threedigitsoftware.com/ but got $HTTP_STATUS"
+            exit 1
+          fi
