@@ -1,11 +1,14 @@
 Options +SymLinksIfOwnerMatch
 RewriteEngine On
 
+# Block direct public access to sensitive files
+RewriteRule ^\.env - [F,L,NC]
+RewriteRule ^\.git - [F,L,NC]
+
 # Allow Installatron requests
 RewriteCond %{REQUEST_FILENAME} deleteme\.\w+\.php
 RewriteRule (.*) - [L] 
 
+RewriteCond %{REQUEST_URI} !^/public
 RewriteCond %{REQUEST_URI} !^public
 RewriteRule ^(.*)$ public/$1 [L]
-
-RewriteRule ^ index.php [L]
