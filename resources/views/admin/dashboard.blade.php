@@ -4,14 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Benew® Admin Dashboard</title>
+    <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
     <script src="https://cdn.tailwindcss.com/3.4.17"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 <body class="bg-gray-50 text-gray-800 min-h-screen" x-data="adminApp()" x-init="init()">
-    <header class="bg-[#1E083B] text-white px-4 sm:px-8 py-4 flex flex-wrap items-center justify-between gap-3">
-        <div class="flex items-center gap-3">
-            <img src="{{ asset('images/benew-logo.jpg') }}" alt="Benew" class="h-9 rounded">
-            <span class="font-bold" x-text="lang==='ar' ? 'لوحة تحكم Benew®' : 'Benew® Dashboard'"></span>
+    <header class="bg-[#1E083B] text-white px-4 sm:px-8 py-4 flex flex-wrap items-center justify-between gap-3 border-b border-white/10">
+        <div class="flex items-center gap-3.5">
+            <img src="{{ asset('images/benew-logo-white.png') }}" alt="Benew®" width="712" height="248" class="h-9 sm:h-10 w-auto object-contain translate-y-[1px]">
+            <span class="h-5 w-px bg-white/20 hidden sm:inline-block"></span>
+            <span class="font-semibold text-sm text-purple-200" x-text="lang==='ar' ? 'لوحة التحكم' : 'Admin Dashboard'"></span>
         </div>
         <div class="flex items-center gap-3 text-xs sm:text-sm">
             <button @click="toggleLang" class="bg-white/10 px-3 py-1.5 rounded-lg font-bold" x-text="lang==='ar' ? 'EN' : 'عربي'"></button>

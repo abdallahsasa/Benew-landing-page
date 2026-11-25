@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400">
+  <defs>
+    <radialGradient id="bgGlow" cx="50%" cy="45%" r="65%">
+      <stop offset="0%" stop-color="#3B1270"/>
+      <stop offset="55%" stop-color="#220845"/>
+      <stop offset="100%" stop-color="#130328"/>
+    </radialGradient>
+    <radialGradient id="goldAura" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FBBF24" stop-opacity="0.28"/>
+      <stop offset="65%" stop-color="#A855F7" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#1E083B" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="pearl" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="60%" stop-color="#F5F0FF"/>
+      <stop offset="100%" stop-color="#DDD2F0"/>
+    </linearGradient>
+    <linearGradient id="pearlShade" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EFE4C8"/>
+      <stop offset="100%" stop-color="#D4C29A"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDE68A"/>
+      <stop offset="50%" stop-color="#FBBF24"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </linearGradient>
+    <linearGradient id="titanium" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#94A3B8"/>
+      <stop offset="45%" stop-color="#F1F5F9"/>
+      <stop offset="100%" stop-color="#64748B"/>
+    </linearGradient>
+    <linearGradient id="gum" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FB7185"/>
+      <stop offset="100%" stop-color="#BE123C"/>
+    </linearGradient>
+    <linearGradient id="cyanGlass" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#BAE6FD" stop-opacity="0.65"/>
+      <stop offset="100%" stop-color="#38BDF8" stop-opacity="0.2"/>
+    </linearGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#090114" flood-opacity="0.55"/>
+    </filter>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#FFFFFF" stroke-width="0.6" stroke-opacity="0.04"/>
+    </pattern>
+  </defs>
+  <rect width="640" height="400" fill="url(#bgGlow)"/>
+  <rect width="640" height="400" fill="url(#grid)"/>
+  <circle cx="320" cy="195" r="165" fill="url(#goldAura)"/>
+
+      <g filter="url(#softShadow)">
+        <!-- Connected 3-unit Zirconia crown/bridge -->
+        <path d="M188,155 C188,125 215,118 232,128 C238,131 244,131 250,128 C264,120 278,125 282,145 L274,232 L198,232 Z" fill="url(#pearl)"/>
+        <path d="M274,145 C278,118 302,112 320,122 C338,112 362,118 366,145 L358,238 L282,238 Z" fill="#FFFFFF"/>
+        <path d="M358,145 C362,125 376,120 390,128 C396,131 402,131 408,128 C425,118 452,125 452,155 L442,232 L366,232 Z" fill="url(#pearl)"/>
+        <!-- Diamond crystalline strength emblem above -->
+        <polygon points="320,64 344,84 320,108 296,84" fill="none" stroke="url(#gold)" stroke-width="2.5"/>
+        <line x1="296" y1="84" x2="344" y2="84" stroke="url(#gold)" stroke-width="1.8"/>
+      </g>
+      <rect x="206" y="328" width="228" height="28" rx="14" fill="#FFFFFF" fill-opacity="0.1" stroke="#FBBF24" stroke-opacity="0.4"/>
+      <text x="320" y="346" text-anchor="middle" fill="#FDE68A" font-family="Inter, sans-serif" font-size="12" font-weight="700" letter-spacing="1">100% METAL-FREE ZrO₂</text>
+    </svg>

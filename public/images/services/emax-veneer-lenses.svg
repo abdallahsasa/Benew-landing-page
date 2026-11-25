@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400">
+  <defs>
+    <radialGradient id="bgGlow" cx="50%" cy="45%" r="65%">
+      <stop offset="0%" stop-color="#3B1270"/>
+      <stop offset="55%" stop-color="#220845"/>
+      <stop offset="100%" stop-color="#130328"/>
+    </radialGradient>
+    <radialGradient id="goldAura" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FBBF24" stop-opacity="0.28"/>
+      <stop offset="65%" stop-color="#A855F7" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#1E083B" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="pearl" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="60%" stop-color="#F5F0FF"/>
+      <stop offset="100%" stop-color="#DDD2F0"/>
+    </linearGradient>
+    <linearGradient id="pearlShade" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EFE4C8"/>
+      <stop offset="100%" stop-color="#D4C29A"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDE68A"/>
+      <stop offset="50%" stop-color="#FBBF24"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </linearGradient>
+    <linearGradient id="titanium" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#94A3B8"/>
+      <stop offset="45%" stop-color="#F1F5F9"/>
+      <stop offset="100%" stop-color="#64748B"/>
+    </linearGradient>
+    <linearGradient id="gum" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FB7185"/>
+      <stop offset="100%" stop-color="#BE123C"/>
+    </linearGradient>
+    <linearGradient id="cyanGlass" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#BAE6FD" stop-opacity="0.65"/>
+      <stop offset="100%" stop-color="#38BDF8" stop-opacity="0.2"/>
+    </linearGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#090114" flood-opacity="0.55"/>
+    </filter>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#FFFFFF" stroke-width="0.6" stroke-opacity="0.04"/>
+    </pattern>
+  </defs>
+  <rect width="640" height="400" fill="url(#bgGlow)"/>
+  <rect width="640" height="400" fill="url(#grid)"/>
+  <circle cx="320" cy="195" r="165" fill="url(#goldAura)"/>
+
+      <defs>
+        <clipPath id="smileMouth"><path d="M156,178 Q320,104 484,178 Q320,278 156,178 Z"/></clipPath>
+      </defs>
+      <g filter="url(#softShadow)">
+        <path d="M152,178 Q320,100 488,178 Q320,282 152,178 Z" fill="#1A0536"/>
+        <g clip-path="url(#smileMouth)">
+          <rect x="192" y="136" width="36" height="76" rx="11" fill="url(#pearl)"/>
+          <rect x="232" y="132" width="40" height="86" rx="13" fill="#FFFFFF"/>
+          <rect x="276" y="128" width="42" height="94" rx="14" fill="#FFFFFF"/>
+          <rect x="322" y="128" width="42" height="94" rx="14" fill="#FFFFFF"/>
+          <rect x="368" y="132" width="40" height="86" rx="13" fill="#FFFFFF"/>
+          <rect x="412" y="136" width="36" height="76" rx="11" fill="url(#pearl)"/>
+        </g>
+        <path d="M152,178 Q320,100 488,178 Q320,282 152,178 Z" fill="none" stroke="url(#gold)" stroke-width="3.5"/>
+      </g>
+      <!-- Signature 4-point Benew sparkles -->
+      <path d="M465,112 L470,126 L484,131 L470,136 L465,150 L460,136 L446,131 L460,126 Z" fill="#FDE68A" filter="url(#glow)"/>
+      <path d="M178,118 L181,127 L190,130 L181,133 L178,142 L175,133 L166,130 L175,127 Z" fill="#FFFFFF"/>
+      <rect x="214" y="328" width="212" height="28" rx="14" fill="#FFFFFF" fill-opacity="0.1" stroke="#FBBF24" stroke-opacity="0.45"/>
+      <text x="320" y="346" text-anchor="middle" fill="#FDE68A" font-family="Inter, sans-serif" font-size="12" font-weight="700" letter-spacing="1">HOLLYWOOD SMILE</text>
+    </svg>

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Benew® | Be New To Be Fine — Dental &amp; Plastic Surgery Clinic</title>
+    <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
     <script src="https://cdn.tailwindcss.com/3.4.17"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <style>
@@ -11,6 +12,8 @@
         [dir="rtl"] body { font-family: 'Cairo', 'Inter', sans-serif; }
         .font-serif-display { font-family: 'Playfair Display', 'Cairo', Georgia, serif; }
         .bg-benew-gradient { background: linear-gradient(135deg, #1E083B 0%, #330F63 100%); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
     @if(!empty($clinic['meta_pixel_id']))
     <script>
@@ -27,21 +30,29 @@
 <body class="bg-[#F6F3FA] text-gray-800 antialiased pb-16 md:pb-0">
 
     <!-- Navbar (No Admin Dashboard button) -->
-    <header class="bg-benew-gradient text-white sticky top-0 z-40 shadow-lg">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3">
-            <a href="#heroSection" class="flex items-center gap-3 shrink-0">
-                <img src="{{ asset('images/benew-logo.jpg') }}" alt="Benew Logo" class="h-10 w-auto rounded-md object-cover">
+    <header class="bg-[#1A0633]/95 backdrop-blur-md text-white sticky top-0 z-40 border-b border-white/10 shadow-[0_8px_30px_rgba(14,3,28,0.35)]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-[4.5rem] sm:h-20 flex items-center justify-between gap-4">
+            <a href="#heroSection" aria-label="Benew Clinic Home" class="group flex items-center shrink-0 py-1 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300/70">
+                <img
+                    src="{{ asset('images/benew-logo-white.png') }}"
+                    alt="Benew® — Be New To Be Fine"
+                    width="712"
+                    height="248"
+                    fetchpriority="high"
+                    decoding="async"
+                    class="h-10 sm:h-12 w-auto object-contain translate-y-[2px] select-none transition-all duration-200 group-hover:opacity-90 group-hover:scale-[1.02]"
+                >
             </a>
-            <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
-                <a href="#servicesSection" data-i18n="nav_services" class="hover:text-amber-300 transition">Dental Services</a>
-                <a href="#whoWeAreSection" data-i18n="nav_who" class="hover:text-amber-300 transition">Who We Are</a>
-                <a href="#footerSection" data-i18n="nav_contact" class="hover:text-amber-300 transition">Contact</a>
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-purple-100/90">
+                <a href="#servicesSection" data-i18n="nav_services" class="relative py-1.5 hover:text-amber-300 transition-colors after:content-[''] after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-amber-300 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-200">Dental Services</a>
+                <a href="#whoWeAreSection" data-i18n="nav_who" class="relative py-1.5 hover:text-amber-300 transition-colors after:content-[''] after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-amber-300 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-200">Who We Are</a>
+                <a href="#footerSection" data-i18n="nav_contact" class="relative py-1.5 hover:text-amber-300 transition-colors after:content-[''] after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-amber-300 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-200">Contact</a>
             </nav>
-            <div class="flex items-center gap-2.5">
-                <button id="btnLangToggle" type="button" class="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-xs font-bold border border-white/20 transition">
+            <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
+                <button id="btnLangToggle" type="button" class="px-3.5 py-2 rounded-full bg-white/10 hover:bg-white/15 text-xs font-bold tracking-wide border border-white/15 hover:border-white/30 transition-all">
                     عربي
                 </button>
-                <a href="#heroFormCard" data-i18n="nav_book" class="bg-amber-400 text-[#1E083B] text-xs sm:text-sm font-semibold px-3.5 sm:px-4 py-2 rounded-full hover:bg-amber-300 transition">
+                <a href="#heroFormCard" data-i18n="nav_book" class="bg-gradient-to-r from-amber-300 via-amber-400 to-amber-300 text-[#1E083B] text-xs sm:text-sm font-bold px-4 sm:px-5 py-2.5 rounded-full shadow-[0_4px_14px_rgba(251,191,36,0.3)] hover:shadow-[0_6px_20px_rgba(251,191,36,0.45)] hover:-translate-y-0.5 transition-all duration-200 whitespace-nowrap">
                     Book Consultation
                 </a>
             </div>
@@ -61,25 +72,32 @@
                 <p data-i18n="hero_desc" class="text-purple-100 text-base sm:text-lg leading-relaxed">
                     From Emax Veneer Lenses and Dental Implants to Laser Whitening and Orthodontics, our specialists deliver pain-free, natural-looking dental treatments tailored to your facial harmony.
                 </p>
-                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-sm">
-                  <div class="bg-white/10 rounded-xl p-3 border border-white/10 flex items-center gap-3">
-                     <img src="{{ asset('images/dental-services.jpg') }}" alt="14 Dental Services" class="w-10 h-10 rounded-lg object-cover shrink-0">
-                <div>
-                   <p data-i18n="stat_1_title" class="font-bold text-amber-300">14 Dental Services</p>
-                 <p data-i18n="stat_1_sub" class="text-purple-200 text-xs">Complete smile care</p>
-              </div>
+                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 text-sm">
+                    <div class="bg-white/10 rounded-xl p-3 border border-white/10 flex items-center gap-3">
+                        <img src="{{ asset('images/dental-services.jpg') }}" alt="14 Dental Services" class="w-10 h-10 rounded-lg object-cover shrink-0">
+                        <div class="min-w-0">
+                            <p data-i18n="stat_1_title" class="font-bold text-amber-300 truncate">14 Dental Services</p>
+                            <p data-i18n="stat_1_sub" class="text-purple-200 text-xs truncate">Complete smile care</p>
+                        </div>
+                    </div>
+                    <div class="bg-white/10 rounded-xl p-3 border border-white/10 flex items-center gap-3">
+                        <img src="{{ asset('images/specialist-doctors.jpg') }}" alt="Specialist Doctors" class="w-10 h-10 rounded-lg object-cover shrink-0">
+                        <div class="min-w-0">
+                            <p data-i18n="stat_2_title" class="font-bold text-amber-300 truncate">Specialist Doctors</p>
+                            <p data-i18n="stat_2_sub" class="text-purple-200 text-xs truncate">Certified materials</p>
+                        </div>
+                    </div>
+                    <div class="bg-white/10 rounded-xl p-3 border border-white/10 flex items-center gap-3">
+                        <img src="{{ asset('images/services/plastic-surgery-consultation.svg') }}" alt="Plastic Surgery" class="w-10 h-10 rounded-lg object-cover shrink-0 border border-white/10">
+                        <div class="min-w-0">
+                            <p data-i18n="stat_3_title" class="font-bold text-amber-300 truncate">Plastic Surgery</p>
+                            <p data-i18n="stat_3_sub" class="text-purple-200 text-xs truncate">Full aesthetic suite</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="bg-white/10 rounded-xl p-3 border border-white/10 flex items-center gap-3">
-                <img src="{{ asset('images/specialist-doctors.jpg') }}" alt="Specialist Doctors" class="w-10 h-10 rounded-lg object-cover shrink-0">
-          <div>
-            <p data-i18n="stat_2_title" class="font-bold text-amber-300">Specialist Doctors</p>
-            <p data-i18n="stat_2_sub" class="text-purple-200 text-xs">Certified materials</p>
-        </div>
-    </div>
-</div>
             </div>
 
-            <div id="heroFormCard" class="lg:col-span-6 bg-white text-gray-800 rounded-2xl shadow-2xl p-6 sm:p-8">
+            <div id="heroFormCard" class="lg:col-span-6 bg-white text-gray-800 rounded-2xl shadow-2xl p-6 sm:p-8 transition-shadow duration-300">
                 <h2 data-i18n="form_title" class="text-2xl font-bold text-[#1E083B] mb-1">Contact Us &amp; Free Assessment</h2>
                 <p data-i18n="form_subtitle" class="text-sm text-gray-500 mb-5">Leave your details and our dental coordinator will contact you shortly.</p>
 
@@ -114,6 +132,36 @@
                     </button>
                 </form>
             </div>
+        </div>
+
+        <!-- Hero Service Visual Showcase (Dummy Explanatory Cards for Every Service) -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 pt-8 border-t border-white/10">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-5">
+                <div>
+                    <span data-i18n="hero_guide_badge" class="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-amber-300">
+                        ✦ Interactive Visual Treatment Guide
+                    </span>
+                    <h2 data-i18n="hero_guide_title" class="text-xl sm:text-2xl font-serif-display font-bold text-white mt-1">
+                        Explore Every Service &amp; How It Works
+                    </h2>
+                    <p data-i18n="hero_guide_sub" class="text-xs sm:text-sm text-purple-200/90 mt-0.5">
+                        Swipe through our illustrated treatment cards — tap any card to pre-select it in the consultation form above.
+                    </p>
+                </div>
+                <div class="flex items-center justify-between md:justify-end gap-3">
+                    <div id="heroFilterPills" class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-1"></div>
+                    <div class="hidden sm:flex items-center gap-2 shrink-0">
+                        <button id="btnHeroPrev" type="button" aria-label="Previous services" class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 flex items-center justify-center text-white transition">
+                            <span id="iconHeroPrev" aria-hidden="true">&#8592;</span>
+                        </button>
+                        <button id="btnHeroNext" type="button" aria-label="Next services" class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 flex items-center justify-center text-white transition">
+                            <span id="iconHeroNext" aria-hidden="true">&#8594;</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="heroServicesTrack" class="flex gap-4 overflow-x-auto no-scrollbar snap-x snap-mandatory scroll-smooth pb-2"></div>
         </div>
     </section>
 
@@ -157,8 +205,8 @@
     <footer id="footerSection" class="bg-benew-gradient text-white py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-                <img src="{{ asset('images/benew-logo.jpg') }}" alt="Benew Logo" class="h-12 w-auto rounded-md mb-3">
-                <p data-i18n="footer_tagline" class="text-purple-200 text-sm">Be New To Be Fine — Dental Treatments.&amp; </p>
+                <img src="{{ asset('images/benew-logo-white.png') }}" alt="Benew® — Be New To Be Fine" width="712" height="248" loading="lazy" class="h-12 w-auto object-contain mb-4">
+                <p data-i18n="footer_tagline" class="text-purple-200 text-sm">Be New To Be Fine — Dental Treatments &amp; Plastic Surgery.</p>
             </div>
             <div class="space-y-2.5 text-sm">
                 <h3 data-i18n="footer_contact" class="font-bold text-amber-300 uppercase tracking-wider text-xs mb-3">Contact &amp; Location</h3>
@@ -206,6 +254,9 @@
                 stat_1_title: '14 Dental Services', stat_1_sub: 'Complete smile care',
                 stat_2_title: 'Specialist Doctors', stat_2_sub: 'Certified materials',
                 stat_3_title: 'Plastic Surgery', stat_3_sub: 'Full aesthetic suite',
+                hero_guide_badge: '✦ Interactive Visual Treatment Guide',
+                hero_guide_title: 'Explore Every Service & How It Works',
+                hero_guide_sub: 'Swipe through our illustrated treatment cards — tap any card to pre-select it in the consultation form above.',
                 form_title: 'Contact Us & Free Assessment', form_subtitle: 'Leave your details and our dental coordinator will contact you shortly.',
                 label_name: 'Full Name *', label_phone: 'Phone / WhatsApp *', label_email: 'Email (Optional)',
                 label_service: 'Treatment of Interest *', label_notes: 'Notes / Questions', btn_submit: 'Request Free Consultation',
@@ -223,6 +274,9 @@
                 stat_1_title: '14 خدمة أسنان', stat_1_sub: 'عناية متكاملة بالابتسامة',
                 stat_2_title: 'أطباء مختصون', stat_2_sub: 'خامات طبية معتمدة',
                 stat_3_title: 'جراحة التجميل', stat_3_sub: 'خدمات تجميلية شاملة',
+                hero_guide_badge: '✦ الدليل المصوّر التفاعلي للخدمات',
+                hero_guide_title: 'تعرّف على كل خدمة وكيف تتم خطوة بخطوة',
+                hero_guide_sub: 'تصفح البطاقات التوضيحية لجميع خدماتنا — اضغط على أي خدمة لاختيارها تلقائياً في نموذج الاستشارة أعلاه.',
                 form_title: 'تواصل معنا واحصل على تقييم مجاني', form_subtitle: 'اترك بياناتك وسيتواصل معك منسق العيادة في أقرب وقت.',
                 label_name: 'الاسم الكامل *', label_phone: 'رقم الهاتف / الواتساب *', label_email: 'البريد الإلكتروني (اختياري)',
                 label_service: 'الخدمة المطلوبة *', label_notes: 'ملاحظات أو استفسارات', btn_submit: 'اطلب استشارة مجانية',
@@ -234,6 +288,133 @@
             }
         };
 
+        let activeHeroFilter = 'all';
+        const serviceVisualMeta = {
+            'filling': { group: 'crowns', tag_en: 'Restorative', tag_ar: 'ترميم تجميلي', note_en: '1-Visit • Seamless Shade Match', note_ar: 'زيارة واحدة • تطابق لوني طبيعي' },
+            'orthodontic': { group: 'implants', tag_en: 'Alignment', tag_ar: 'تقويم وإطباق', note_en: 'Clear Aligners & Modern Braces', note_ar: 'قوالب شفافة وتقويم حديث' },
+            'normal-gingivectomy': { group: 'smile', tag_en: 'Smile Frame', tag_ar: 'تجميل اللثة', note_en: 'Gentle Symmetrical Gum Line', note_ar: 'تنسيق متناغم لخط اللثة' },
+            'dentures': { group: 'implants', tag_en: 'Prosthetics', tag_ar: 'تعويضات سنية', note_en: 'Custom Full & Partial Arch', note_ar: 'تركيبات مريحة كاملة وجزئية' },
+            'jaw-surgery': { group: 'implants', tag_en: 'Maxillofacial', tag_ar: 'جراحة الوجه والفكين', note_en: '3D Bite & Profile Balance', note_ar: 'توازن الفكين وتناسق الوجه' },
+            'laser-whitening': { group: 'smile', tag_en: 'Brightening', tag_ar: 'تبييض فوري', note_en: 'Up to 8 Shades in 45 Mins', note_ar: 'تفتيح فوري آمن خلال جلسة' },
+            'root-canal-treatment': { group: 'crowns', tag_en: 'Endodontics', tag_ar: 'حفظ السن الطبيعي', note_en: 'Pain-Free Rotary Precision', note_ar: 'تنظيف وحشو جذور بدون ألم' },
+            'bone-grafts': { group: 'implants', tag_en: 'Regenerative', tag_ar: 'بناء العظم', note_en: 'Solid Implant Foundation', note_ar: 'تقوية عظم الفك قبل الزراعة' },
+            'dental-implant': { group: 'implants', tag_en: 'Implantology', tag_ar: 'زراعة دائمة', note_en: 'Titanium Root + Zirconia Crown', note_ar: 'غرسة تيتانيوم وتاج زيركون' },
+            'porcelain-crown': { group: 'crowns', tag_en: 'Crown Cap', tag_ar: 'تغطية وحماية', note_en: '360° Tooth Reinforcement', note_ar: 'حماية شاملة ومظهر طبيعي' },
+            'lumineers': { group: 'smile', tag_en: 'No-Prep Veneer', tag_ar: 'بدون برد للأسنان', note_en: '0.2mm Ultra-Thin Lenses', note_ar: 'عدسات رقيقة جداً 0.2 ملم' },
+            'emax-crowns': { group: 'crowns', tag_en: 'All-Ceramic', tag_ar: 'خزف عالي الشفافية', note_en: 'Lifelike Enamel Translucency', note_ar: 'شفافية تحاكي المينا الطبيعية' },
+            'emax-veneer-lenses': { group: 'smile', tag_en: 'Hollywood Smile', tag_ar: 'ابتسامة هوليوود', note_en: 'Custom Digital Smile Design', note_ar: 'تصميم رقمي متكامل للابتسامة' },
+            'zirconium-crowns': { group: 'crowns', tag_en: 'Bio-Zirconia', tag_ar: 'زيركون خالٍ من المعادن', note_en: 'Maximum Strength & Biocompatible', note_ar: 'أقصى متانة وتوافق حيوي للثة' },
+            'plastic-surgery-consultation': { group: 'aesthetic', tag_en: 'Aesthetic Suite', tag_ar: 'التجميل الجراحي', note_en: 'Facial & Body Harmony Plan', note_ar: 'خطة تجميلية مخصصة للوجه والجسم' }
+        };
+
+        const heroFilters = [
+            { key: 'all', en: 'All (15)', ar: 'الكل (15)' },
+            { key: 'smile', en: 'Smile & Whitening', ar: 'الابتسامة والتبييض' },
+            { key: 'crowns', en: 'Crowns & Care', ar: 'التيجان والعلاج' },
+            { key: 'implants', en: 'Implants & Ortho', ar: 'الزراعة والتقويم' },
+            { key: 'aesthetic', en: 'Plastic Surgery', ar: 'جراحة التجميل' }
+        ];
+
+        function renderHeroVisualGuide() {
+            const pillsEl = document.getElementById('heroFilterPills');
+            const trackEl = document.getElementById('heroServicesTrack');
+            if (!pillsEl || !trackEl) return;
+
+            document.getElementById('iconHeroPrev').innerHTML = currentLang === 'ar' ? '&#8594;' : '&#8592;';
+            document.getElementById('iconHeroNext').innerHTML = currentLang === 'ar' ? '&#8592;' : '&#8594;';
+
+            pillsEl.innerHTML = '';
+            heroFilters.forEach(f => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                const active = activeHeroFilter === f.key;
+                btn.className = active
+                    ? 'px-3 py-1.5 rounded-full text-xs font-bold bg-amber-400 text-[#1E083B] shadow-sm whitespace-nowrap transition'
+                    : 'px-3 py-1.5 rounded-full text-xs font-medium bg-white/10 text-purple-100 hover:bg-white/20 border border-white/10 whitespace-nowrap transition';
+                btn.textContent = currentLang === 'ar' ? f.ar : f.en;
+                btn.addEventListener('click', () => {
+                    activeHeroFilter = f.key;
+                    renderHeroVisualGuide();
+                    trackEl.scrollTo({ left: 0, behavior: 'smooth' });
+                });
+                pillsEl.appendChild(btn);
+            });
+
+            trackEl.innerHTML = '';
+            const filtered = allServices.filter(s => {
+                if (activeHeroFilter === 'all') return true;
+                const meta = serviceVisualMeta[s.slug];
+                return meta ? meta.group === activeHeroFilter : (activeHeroFilter === 'aesthetic' && s.category === 'plastic_surgery');
+            });
+
+            filtered.forEach((s, idx) => {
+                const meta = serviceVisualMeta[s.slug] || {
+                    tag_en: s.category === 'plastic_surgery' ? 'Aesthetic Suite' : 'Dental Care',
+                    tag_ar: s.category === 'plastic_surgery' ? 'جراحة التجميل' : 'عناية الأسنان',
+                    note_en: 'Specialist Personalized Plan',
+                    note_ar: 'خطة علاجية بإشراف أخصائي'
+                };
+                const num = String(s.display_order || (idx + 1)).padStart(2, '0');
+                const imgSrc = `/images/services/${s.slug}.svg`;
+                const fallbackSrc = '/images/dental-services.jpg';
+                const card = document.createElement('article');
+                card.className = 'w-[268px] sm:w-[292px] shrink-0 snap-start bg-white/[0.07] hover:bg-white/[0.12] backdrop-blur-sm rounded-2xl border border-white/15 hover:border-amber-300/60 overflow-hidden transition-all duration-300 flex flex-col group cursor-pointer';
+                card.innerHTML = `
+                    <div class="relative aspect-[16/10] bg-[#16042C] overflow-hidden border-b border-white/10">
+                        <img src="${imgSrc}" onerror="this.onerror=null;this.src='${fallbackSrc}'" alt="${svcName(s)}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-2.5 start-2.5 px-2.5 py-0.5 rounded-full bg-[#1E083B]/85 backdrop-blur-md border border-white/15 text-[11px] font-bold text-amber-300">
+                            #${num} · ${currentLang === 'ar' ? meta.tag_ar : meta.tag_en}
+                        </span>
+                        <span class="absolute top-2.5 end-2.5 px-2 py-0.5 rounded-md bg-white/15 backdrop-blur-md text-[10px] font-medium text-purple-100">
+                            ${currentLang === 'ar' ? 'توضيحي' : 'Demo'}
+                        </span>
+                    </div>
+                    <div class="p-4 flex-1 flex flex-col justify-between gap-3">
+                        <div>
+                            <h3 class="font-bold text-base text-white group-hover:text-amber-300 transition-colors">${svcName(s)}</h3>
+                            <p class="text-xs text-purple-100/85 leading-relaxed mt-1.5 line-clamp-3">${svcDesc(s) || ''}</p>
+                        </div>
+                        <div class="space-y-2.5 pt-1">
+                            <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white/10 border border-white/10 text-[11px] text-amber-200 font-medium">
+                                <span>✦</span>
+                                <span>${currentLang === 'ar' ? meta.note_ar : meta.note_en}</span>
+                            </div>
+                            <div class="flex items-center justify-between text-xs font-bold text-amber-300 pt-1 border-t border-white/10">
+                                <span>${currentLang === 'ar' ? 'اختر هذه الخدمة للحجز' : 'Select for Free Assessment'}</span>
+                                <span aria-hidden="true" class="transition-transform group-hover:translate-x-0.5">${currentLang === 'ar' ? '&#8592;' : '&#8594;'}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                card.addEventListener('click', () => {
+                    const select = document.getElementById('leadService');
+                    if (select) {
+                        select.value = s.name_en;
+                        select.classList.add('ring-2', 'ring-amber-400');
+                        setTimeout(() => select.classList.remove('ring-2', 'ring-amber-400'), 1600);
+                    }
+                    if (s.category === 'dental') {
+                        activeServiceId = s.id;
+                        renderServices();
+                        renderActivePanel();
+                    }
+                    document.getElementById('heroFormCard').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                });
+                trackEl.appendChild(card);
+            });
+        }
+
+        document.getElementById('btnHeroPrev')?.addEventListener('click', () => {
+            const trackEl = document.getElementById('heroServicesTrack');
+            const dirFactor = currentLang === 'ar' ? 1 : -1;
+            trackEl.scrollBy({ left: dirFactor * 310, behavior: 'smooth' });
+        });
+
+        document.getElementById('btnHeroNext')?.addEventListener('click', () => {
+            const trackEl = document.getElementById('heroServicesTrack');
+            const dirFactor = currentLang === 'ar' ? -1 : 1;
+            trackEl.scrollBy({ left: dirFactor * 310, behavior: 'smooth' });
+        });
         function svcName(s) { return currentLang === 'ar' ? s.name_ar : s.name_en; }
         function svcDesc(s) { return currentLang === 'ar' ? s.short_description_ar : s.short_description_en; }
 
@@ -257,6 +438,7 @@
             }
             renderServices();
             renderActivePanel();
+            renderHeroVisualGuide();
         }
 
         function renderServices() {

@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400">
+  <defs>
+    <radialGradient id="bgGlow" cx="50%" cy="45%" r="65%">
+      <stop offset="0%" stop-color="#3B1270"/>
+      <stop offset="55%" stop-color="#220845"/>
+      <stop offset="100%" stop-color="#130328"/>
+    </radialGradient>
+    <radialGradient id="goldAura" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FBBF24" stop-opacity="0.28"/>
+      <stop offset="65%" stop-color="#A855F7" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#1E083B" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="pearl" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="60%" stop-color="#F5F0FF"/>
+      <stop offset="100%" stop-color="#DDD2F0"/>
+    </linearGradient>
+    <linearGradient id="pearlShade" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EFE4C8"/>
+      <stop offset="100%" stop-color="#D4C29A"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDE68A"/>
+      <stop offset="50%" stop-color="#FBBF24"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </linearGradient>
+    <linearGradient id="titanium" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#94A3B8"/>
+      <stop offset="45%" stop-color="#F1F5F9"/>
+      <stop offset="100%" stop-color="#64748B"/>
+    </linearGradient>
+    <linearGradient id="gum" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FB7185"/>
+      <stop offset="100%" stop-color="#BE123C"/>
+    </linearGradient>
+    <linearGradient id="cyanGlass" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#BAE6FD" stop-opacity="0.65"/>
+      <stop offset="100%" stop-color="#38BDF8" stop-opacity="0.2"/>
+    </linearGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#090114" flood-opacity="0.55"/>
+    </filter>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#FFFFFF" stroke-width="0.6" stroke-opacity="0.04"/>
+    </pattern>
+  </defs>
+  <rect width="640" height="400" fill="url(#bgGlow)"/>
+  <rect width="640" height="400" fill="url(#grid)"/>
+  <circle cx="320" cy="195" r="165" fill="url(#goldAura)"/>
+
+      <defs>
+        <clipPath id="leftHalf"><rect x="0" y="0" width="320" height="400"/></clipPath>
+        <clipPath id="rightHalf"><rect x="320" y="0" width="320" height="400"/></clipPath>
+      </defs>
+      <g filter="url(#softShadow)">
+        <path d="M255,135 C255,102 285,92 308,105 C316,110 324,110 332,105 C355,92 385,102 385,135 C385,168 374,195 368,225 C362,258 355,300 342,300 C331,300 328,255 320,255 C312,255 309,300 298,300 C285,300 278,258 272,225 C266,195 255,168 255,135 Z" fill="url(#pearlShade)" clip-path="url(#leftHalf)"/>
+        <path d="M255,135 C255,102 285,92 308,105 C316,110 324,110 332,105 C355,92 385,102 385,135 C385,168 374,195 368,225 C362,258 355,300 342,300 C331,300 328,255 320,255 C312,255 309,300 298,300 C285,300 278,258 272,225 C266,195 255,168 255,135 Z" fill="#FFFFFF" clip-path="url(#rightHalf)"/>
+      </g>
+      <!-- Center split divider -->
+      <line x1="320" y1="78" x2="320" y2="312" stroke="url(#gold)" stroke-width="2.5" stroke-dasharray="5 4"/>
+      <!-- Laser beam hitting bright right side -->
+      <polygon points="500,75 512,95 355,185 345,155" fill="#38BDF8" opacity="0.32" filter="url(#glow)"/>
+      <line x1="506" y1="85" x2="352" y2="170" stroke="#E0F2FE" stroke-width="3" filter="url(#glow)"/>
+      <!-- Sparkles on whitened side -->
+      <path d="M365,122 L369,134 L381,138 L369,142 L365,154 L361,142 L349,138 L361,134 Z" fill="#FDE68A"/>
+      <path d="M398,195 L401,203 L409,206 L401,209 L398,217 L395,209 L387,206 L395,203 Z" fill="#FFFFFF"/>
+      <text x="225" y="205" text-anchor="middle" fill="#D4C29A" font-family="Inter, sans-serif" font-size="13" font-weight="700">A3</text>
+      <text x="434" y="205" text-anchor="middle" fill="#FFFFFF" font-family="Inter, sans-serif" font-size="13" font-weight="700">B1+</text>
+      <rect x="218" y="328" width="204" height="28" rx="14" fill="#FFFFFF" fill-opacity="0.1" stroke="#38BDF8" stroke-opacity="0.45"/>
+      <text x="320" y="346" text-anchor="middle" fill="#E0F2FE" font-family="Inter, sans-serif" font-size="12" font-weight="700" letter-spacing="1">1-VISIT LASER GLOW</text>
+    </svg>
