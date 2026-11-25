@@ -4,8 +4,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @php
+        $siteUrl = url()->current();
+        $ogTitle = 'Benew® Clinic | Transform Your Smile — عيادة بينيو للأسنان والتجميل';
+        $ogDescription = 'Hollywood Smile, Emax Veneer Lenses, Dental Implants, Laser Whitening, Orthodontics & Plastic Surgery. Book your free consultation today! | ابتسامة هوليوود وزراعة وتجميل الأسنان — احجز استشارتك المجانية الآن.';
+        $ogImage = asset('images/og-cover.jpg');
+        $ogSecureImage = preg_replace('/^http:/i', 'https:', $ogImage);
+    @endphp
     <title>Benew® | Be New To Be Fine — Dental &amp; Plastic Surgery Clinic</title>
+    <meta name="description" content="{{ $ogDescription }}">
+    <meta name="keywords" content="Benew Clinic, Dental Clinic, Hollywood Smile, Emax Veneers, Dental Implants, Laser Teeth Whitening, Orthodontics, Zirconium Crowns, Plastic Surgery, عيادة بينيو, ابتسامة هوليوود, زراعة الأسنان, عدسات إيماكس, تبييض الأسنان بالليزر, تقويم الأسنان">
+    <meta name="author" content="Benew® Clinic">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#1E083B">
+    <link rel="canonical" href="{{ $siteUrl }}">
+
+    <!-- Favicons & Apple Touch Icon -->
     <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('favicon.png') }}">
+
+    <!-- Open Graph / WhatsApp / Facebook / Instagram / LinkedIn / Telegram -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Benew® Clinic">
+    <meta property="og:url" content="{{ $siteUrl }}">
+    <meta property="og:title" content="{{ $ogTitle }}">
+    <meta property="og:description" content="{{ $ogDescription }}">
+    <meta property="og:image" content="{{ app()->environment('production') ? $ogSecureImage : $ogImage }}">
+    <meta property="og:image:secure_url" content="{{ $ogSecureImage }}">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Benew® — Be New To Be Fine | Dental Treatments & Plastic Surgery Clinic">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="ar_AR">
+
+    <!-- X (Twitter) Large Image Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="{{ $siteUrl }}">
+    <meta name="twitter:title" content="{{ $ogTitle }}">
+    <meta name="twitter:description" content="{{ $ogDescription }}">
+    <meta name="twitter:image" content="{{ app()->environment('production') ? $ogSecureImage : $ogImage }}">
+    <meta name="twitter:image:alt" content="Benew® — Be New To Be Fine | Dental Treatments & Plastic Surgery Clinic">
+
+    <!-- Structured Data (Schema.org Medical/Dental Clinic) -->
+    @php
+        $schemaData = [
+            '@context' => 'https://schema.org',
+            '@type' => 'Dentist',
+            'name' => 'Benew® Clinic',
+            'alternateName' => 'عيادة Benew® للأسنان والتجميل',
+            'description' => $ogDescription,
+            'url' => url('/'),
+            'logo' => asset('images/benew-logo-white.png'),
+            'image' => app()->environment('production') ? $ogSecureImage : $ogImage,
+            'telephone' => $clinic['phone'] ?? '',
+            'address' => [
+                '@type' => 'PostalAddress',
+                'streetAddress' => $clinic['address_en'] ?? '',
+            ],
+            'sameAs' => array_values(array_filter($clinic['social'] ?? [])),
+        ];
+    @endphp
+    <script type="application/ld+json">{!! json_encode($schemaData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}</script>
+
     <script src="https://cdn.tailwindcss.com/3.4.17"></script>
     <link
         href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
