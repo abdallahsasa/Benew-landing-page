@@ -1,58 +1,87 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Benew® | Be New To Be Fine — Dental &amp; Plastic Surgery Clinic</title>
     <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
     <script src="https://cdn.tailwindcss.com/3.4.17"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
     <style>
-        body { font-family: 'Inter', 'Cairo', sans-serif; }
-        [dir="rtl"] body { font-family: 'Cairo', 'Inter', sans-serif; }
-        .font-serif-display { font-family: 'Playfair Display', 'Cairo', Georgia, serif; }
-        .bg-benew-gradient { background: linear-gradient(135deg, #1E083B 0%, #330F63 100%); }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        body {
+            font-family: 'Inter', 'Cairo', sans-serif;
+        }
+
+        [dir="rtl"] body {
+            font-family: 'Cairo', 'Inter', sans-serif;
+        }
+
+        .font-serif-display {
+            font-family: 'Playfair Display', 'Cairo', Georgia, serif;
+        }
+
+        .bg-benew-gradient {
+            background: linear-gradient(135deg, #1E083B 0%, #330F63 100%);
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
     </style>
     @if(!empty($clinic['meta_pixel_id']))
-    <script>
-        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-        n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-        document,'script','https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '{{ $clinic['meta_pixel_id'] }}');
-        fbq('track', 'PageView');
-    </script>
+        <script>
+            !function (f, b, e, v, n, t, s) {
+                if (f.fbq) return; n = f.fbq = function () {
+                    n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                }; if (!f._fbq) f._fbq = n;
+                n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = []; t = b.createElement(e); t.async = !0;
+                t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s)
+            }(window,
+                document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '{{ $clinic['meta_pixel_id'] }}');
+            fbq('track', 'PageView');
+        </script>
     @endif
 </head>
+
 <body class="bg-[#F6F3FA] text-gray-800 antialiased pb-16 md:pb-0">
 
     <!-- Navbar (No Admin Dashboard button) -->
-    <header class="bg-[#1A0633]/95 backdrop-blur-md text-white sticky top-0 z-40 border-b border-white/10 shadow-[0_8px_30px_rgba(14,3,28,0.35)]">
+    <header
+        class="bg-[#1A0633]/95 backdrop-blur-md text-white sticky top-0 z-40 border-b border-white/10 shadow-[0_8px_30px_rgba(14,3,28,0.35)]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-[4.5rem] sm:h-20 flex items-center justify-between gap-4">
-            <a href="#heroSection" aria-label="Benew Clinic Home" class="group flex items-center shrink-0 py-1 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300/70">
-                <img
-                    src="{{ asset('images/benew-logo-white.png') }}"
-                    alt="Benew® — Be New To Be Fine"
-                    width="712"
-                    height="248"
-                    fetchpriority="high"
-                    decoding="async"
-                    class="h-10 sm:h-12 w-auto object-contain translate-y-[2px] select-none transition-all duration-200 group-hover:opacity-90 group-hover:scale-[1.02]"
-                >
+            <a href="#heroSection" aria-label="Benew Clinic Home"
+                class="group flex items-center shrink-0 py-1 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300/70">
+                <img src="{{ asset('images/benew-logo-white.png') }}" alt="Benew® — Be New To Be Fine" width="712"
+                    height="248" fetchpriority="high" decoding="async"
+                    class="h-10 sm:h-12 w-auto object-contain translate-y-[2px] select-none transition-all duration-200 group-hover:opacity-90 group-hover:scale-[1.02]">
             </a>
             <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-purple-100/90">
-                <a href="#servicesSection" data-i18n="nav_services" class="relative py-1.5 hover:text-amber-300 transition-colors after:content-[''] after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-amber-300 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-200">Dental Services</a>
-                <a href="#whoWeAreSection" data-i18n="nav_who" class="relative py-1.5 hover:text-amber-300 transition-colors after:content-[''] after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-amber-300 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-200">Who We Are</a>
-                <a href="#footerSection" data-i18n="nav_contact" class="relative py-1.5 hover:text-amber-300 transition-colors after:content-[''] after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-amber-300 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-200">Contact</a>
+                <a href="#servicesSection" data-i18n="nav_services"
+                    class="relative py-1.5 hover:text-amber-300 transition-colors after:content-[''] after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-amber-300 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-200">Dental
+                    Services</a>
+                <a href="#whoWeAreSection" data-i18n="nav_who"
+                    class="relative py-1.5 hover:text-amber-300 transition-colors after:content-[''] after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-amber-300 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-200">Who
+                    We Are</a>
+                <a href="#footerSection" data-i18n="nav_contact"
+                    class="relative py-1.5 hover:text-amber-300 transition-colors after:content-[''] after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-amber-300 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-200">Contact</a>
             </nav>
             <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
-                <button id="btnLangToggle" type="button" class="px-3.5 py-2 rounded-full bg-white/10 hover:bg-white/15 text-xs font-bold tracking-wide border border-white/15 hover:border-white/30 transition-all">
+                <button id="btnLangToggle" type="button"
+                    class="px-3.5 py-2 rounded-full bg-white/10 hover:bg-white/15 text-xs font-bold tracking-wide border border-white/15 hover:border-white/30 transition-all">
                     عربي
                 </button>
-                <a href="#heroFormCard" data-i18n="nav_book" class="bg-gradient-to-r from-amber-300 via-amber-400 to-amber-300 text-[#1E083B] text-xs sm:text-sm font-bold px-4 sm:px-5 py-2.5 rounded-full shadow-[0_4px_14px_rgba(251,191,36,0.3)] hover:shadow-[0_6px_20px_rgba(251,191,36,0.45)] hover:-translate-y-0.5 transition-all duration-200 whitespace-nowrap">
+                <a href="#heroFormCard" data-i18n="nav_book"
+                    class="bg-gradient-to-r from-amber-300 via-amber-400 to-amber-300 text-[#1E083B] text-xs sm:text-sm font-bold px-4 sm:px-5 py-2.5 rounded-full shadow-[0_4px_14px_rgba(251,191,36,0.3)] hover:shadow-[0_6px_20px_rgba(251,191,36,0.45)] hover:-translate-y-0.5 transition-all duration-200 whitespace-nowrap">
                     Book Consultation
                 </a>
             </div>
@@ -63,71 +92,87 @@
     <section id="heroSection" class="bg-benew-gradient text-white py-10 md:py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div class="lg:col-span-6 space-y-5">
-                <span data-i18n="hero_badge" class="inline-block bg-white/10 border border-white/20 text-amber-300 text-xs font-semibold px-3 py-1 rounded-full tracking-wide uppercase">
+                <span data-i18n="hero_badge"
+                    class="inline-block bg-white/10 border border-white/20 text-amber-300 text-xs font-semibold px-3 py-1 rounded-full tracking-wide uppercase">
                     Precision Dental &amp; Aesthetic Care
                 </span>
-                <h1 data-i18n="hero_title" class="text-3xl sm:text-4xl lg:text-5xl font-serif-display font-bold leading-tight">
+                <h1 data-i18n="hero_title"
+                    class="text-3xl sm:text-4xl lg:text-5xl font-serif-display font-bold leading-tight">
                     Transform Your Smile with <span class="text-amber-300">Benew®</span>
                 </h1>
                 <p data-i18n="hero_desc" class="text-purple-100 text-base sm:text-lg leading-relaxed">
-                    From Emax Veneer Lenses and Dental Implants to Laser Whitening and Orthodontics, our specialists deliver pain-free, natural-looking dental treatments tailored to your facial harmony.
+                    From Emax Veneer Lenses and Dental Implants to Laser Whitening and Orthodontics, our specialists
+                    deliver pain-free, natural-looking dental treatments tailored to your facial harmony.
                 </p>
-                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 text-sm">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 text-sm">
                     <div class="bg-white/10 rounded-xl p-3 border border-white/10 flex items-center gap-3">
-                        <img src="{{ asset('images/dental-services.jpg') }}" alt="14 Dental Services" class="w-10 h-10 rounded-lg object-cover shrink-0">
+                        <img src="{{ asset('images/dental-services.jpg') }}" alt="14 Dental Services"
+                            class="w-10 h-10 rounded-lg object-cover shrink-0">
                         <div class="min-w-0">
                             <p data-i18n="stat_1_title" class="font-bold text-amber-300 truncate">14 Dental Services</p>
                             <p data-i18n="stat_1_sub" class="text-purple-200 text-xs truncate">Complete smile care</p>
                         </div>
                     </div>
                     <div class="bg-white/10 rounded-xl p-3 border border-white/10 flex items-center gap-3">
-                        <img src="{{ asset('images/specialist-doctors.jpg') }}" alt="Specialist Doctors" class="w-10 h-10 rounded-lg object-cover shrink-0">
+                        <img src="{{ asset('images/specialist-doctors.jpg') }}" alt="Specialist Doctors"
+                            class="w-10 h-10 rounded-lg object-cover shrink-0">
                         <div class="min-w-0">
                             <p data-i18n="stat_2_title" class="font-bold text-amber-300 truncate">Specialist Doctors</p>
                             <p data-i18n="stat_2_sub" class="text-purple-200 text-xs truncate">Certified materials</p>
                         </div>
                     </div>
-                    <div class="bg-white/10 rounded-xl p-3 border border-white/10 flex items-center gap-3">
-                        <img src="{{ asset('images/services/plastic-surgery-consultation.svg') }}" alt="Plastic Surgery" class="w-10 h-10 rounded-lg object-cover shrink-0 border border-white/10">
-                        <div class="min-w-0">
-                            <p data-i18n="stat_3_title" class="font-bold text-amber-300 truncate">Plastic Surgery</p>
-                            <p data-i18n="stat_3_sub" class="text-purple-200 text-xs truncate">Full aesthetic suite</p>
-                        </div>
-                    </div>
+
                 </div>
             </div>
 
-            <div id="heroFormCard" class="lg:col-span-6 bg-white text-gray-800 rounded-2xl shadow-2xl p-6 sm:p-8 transition-shadow duration-300">
-                <h2 data-i18n="form_title" class="text-2xl font-bold text-[#1E083B] mb-1">Contact Us &amp; Free Assessment</h2>
-                <p data-i18n="form_subtitle" class="text-sm text-gray-500 mb-5">Leave your details and our dental coordinator will contact you shortly.</p>
+            <div id="heroFormCard"
+                class="lg:col-span-6 bg-white text-gray-800 rounded-2xl shadow-2xl p-6 sm:p-8 transition-shadow duration-300">
+                <h2 data-i18n="form_title" class="text-2xl font-bold text-[#1E083B] mb-1">Contact Us &amp; Free
+                    Assessment</h2>
+                <p data-i18n="form_subtitle" class="text-sm text-gray-500 mb-5">Leave your details and our dental
+                    coordinator will contact you shortly.</p>
 
-                <div id="leadSuccessAlert" class="hidden bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-xl p-4 mb-4 text-sm"></div>
-                <div id="leadErrorAlert" class="hidden bg-red-50 border border-red-200 text-red-700 rounded-xl p-3 mb-4 text-sm"></div>
+                <div id="leadSuccessAlert"
+                    class="hidden bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-xl p-4 mb-4 text-sm">
+                </div>
+                <div id="leadErrorAlert"
+                    class="hidden bg-red-50 border border-red-200 text-red-700 rounded-xl p-3 mb-4 text-sm"></div>
 
                 <form id="leadForm" class="space-y-4">
                     <div>
-                        <label for="leadName" data-i18n="label_name" class="block text-xs font-semibold text-gray-600 mb-1">Full Name *</label>
-                        <input id="leadName" type="text" required class="w-full rounded-xl border border-gray-300 px-4 py-2.5 text-sm focus:ring-2 focus:ring-purple-700 focus:outline-none">
+                        <label for="leadName" data-i18n="label_name"
+                            class="block text-xs font-semibold text-gray-600 mb-1">Full Name *</label>
+                        <input id="leadName" type="text" required
+                            class="w-full rounded-xl border border-gray-300 px-4 py-2.5 text-sm focus:ring-2 focus:ring-purple-700 focus:outline-none">
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                            <label for="leadPhone" data-i18n="label_phone" class="block text-xs font-semibold text-gray-600 mb-1">Phone / WhatsApp *</label>
-                            <input id="leadPhone" type="tel" required class="w-full rounded-xl border border-gray-300 px-4 py-2.5 text-sm focus:ring-2 focus:ring-purple-700 focus:outline-none">
+                            <label for="leadPhone" data-i18n="label_phone"
+                                class="block text-xs font-semibold text-gray-600 mb-1">Phone / WhatsApp *</label>
+                            <input id="leadPhone" type="tel" required
+                                class="w-full rounded-xl border border-gray-300 px-4 py-2.5 text-sm focus:ring-2 focus:ring-purple-700 focus:outline-none">
                         </div>
                         <div>
-                            <label for="leadEmail" data-i18n="label_email" class="block text-xs font-semibold text-gray-600 mb-1">Email (Optional)</label>
-                            <input id="leadEmail" type="email" class="w-full rounded-xl border border-gray-300 px-4 py-2.5 text-sm focus:ring-2 focus:ring-purple-700 focus:outline-none">
+                            <label for="leadEmail" data-i18n="label_email"
+                                class="block text-xs font-semibold text-gray-600 mb-1">Email (Optional)</label>
+                            <input id="leadEmail" type="email"
+                                class="w-full rounded-xl border border-gray-300 px-4 py-2.5 text-sm focus:ring-2 focus:ring-purple-700 focus:outline-none">
                         </div>
                     </div>
                     <div>
-                        <label for="leadService" data-i18n="label_service" class="block text-xs font-semibold text-gray-600 mb-1">Treatment of Interest *</label>
-                        <select id="leadService" required class="w-full rounded-xl border border-gray-300 px-4 py-2.5 text-sm bg-white focus:ring-2 focus:ring-purple-700 focus:outline-none"></select>
+                        <label for="leadService" data-i18n="label_service"
+                            class="block text-xs font-semibold text-gray-600 mb-1">Treatment of Interest *</label>
+                        <select id="leadService" required
+                            class="w-full rounded-xl border border-gray-300 px-4 py-2.5 text-sm bg-white focus:ring-2 focus:ring-purple-700 focus:outline-none"></select>
                     </div>
                     <div>
-                        <label for="leadMessage" data-i18n="label_notes" class="block text-xs font-semibold text-gray-600 mb-1">Notes / Questions</label>
-                        <textarea id="leadMessage" rows="2" class="w-full rounded-xl border border-gray-300 px-4 py-2.5 text-sm focus:ring-2 focus:ring-purple-700 focus:outline-none"></textarea>
+                        <label for="leadMessage" data-i18n="label_notes"
+                            class="block text-xs font-semibold text-gray-600 mb-1">Notes / Questions</label>
+                        <textarea id="leadMessage" rows="2"
+                            class="w-full rounded-xl border border-gray-300 px-4 py-2.5 text-sm focus:ring-2 focus:ring-purple-700 focus:outline-none"></textarea>
                     </div>
-                    <button id="btnSubmitLead" type="submit" data-i18n="btn_submit" class="w-full bg-benew-gradient text-white font-semibold py-3 rounded-xl hover:opacity-95 transition shadow-md">
+                    <button id="btnSubmitLead" type="submit" data-i18n="btn_submit"
+                        class="w-full bg-benew-gradient text-white font-semibold py-3 rounded-xl hover:opacity-95 transition shadow-md">
                         Request Free Consultation
                     </button>
                 </form>
@@ -138,38 +183,46 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 pt-8 border-t border-white/10">
             <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-5">
                 <div>
-                    <span data-i18n="hero_guide_badge" class="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-amber-300">
+                    <span data-i18n="hero_guide_badge"
+                        class="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-amber-300">
                         ✦ Interactive Visual Treatment Guide
                     </span>
-                    <h2 data-i18n="hero_guide_title" class="text-xl sm:text-2xl font-serif-display font-bold text-white mt-1">
+                    <h2 data-i18n="hero_guide_title"
+                        class="text-xl sm:text-2xl font-serif-display font-bold text-white mt-1">
                         Explore Every Service &amp; How It Works
                     </h2>
                     <p data-i18n="hero_guide_sub" class="text-xs sm:text-sm text-purple-200/90 mt-0.5">
-                        Swipe through our illustrated treatment cards — tap any card to pre-select it in the consultation form above.
+                        Swipe through our illustrated treatment cards — tap any card to pre-select it in the
+                        consultation form above.
                     </p>
                 </div>
                 <div class="flex items-center justify-between md:justify-end gap-3">
                     <div id="heroFilterPills" class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-1"></div>
                     <div class="hidden sm:flex items-center gap-2 shrink-0">
-                        <button id="btnHeroPrev" type="button" aria-label="Previous services" class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 flex items-center justify-center text-white transition">
+                        <button id="btnHeroPrev" type="button" aria-label="Previous services"
+                            class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 flex items-center justify-center text-white transition">
                             <span id="iconHeroPrev" aria-hidden="true">&#8592;</span>
                         </button>
-                        <button id="btnHeroNext" type="button" aria-label="Next services" class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 flex items-center justify-center text-white transition">
+                        <button id="btnHeroNext" type="button" aria-label="Next services"
+                            class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 flex items-center justify-center text-white transition">
                             <span id="iconHeroNext" aria-hidden="true">&#8594;</span>
                         </button>
                     </div>
                 </div>
             </div>
 
-            <div id="heroServicesTrack" class="flex gap-4 overflow-x-auto no-scrollbar snap-x snap-mandatory scroll-smooth pb-2"></div>
+            <div id="heroServicesTrack"
+                class="flex gap-4 overflow-x-auto no-scrollbar snap-x snap-mandatory scroll-smooth pb-2"></div>
         </div>
     </section>
 
     <!-- Dental Services & Case Gallery -->
     <section id="servicesSection" class="py-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-2xl mx-auto mb-10">
-            <h2 data-i18n="services_title" class="text-3xl font-serif-display font-bold text-[#1E083B]">Our Dental Treatments &amp; Case Results</h2>
-            <p data-i18n="services_sub" class="text-gray-600 mt-2 text-sm sm:text-base">Tap any of the 14 treatments below to view details and clinical case results.</p>
+            <h2 data-i18n="services_title" class="text-3xl font-serif-display font-bold text-[#1E083B]">Our Dental
+                Treatments &amp; Case Results</h2>
+            <p data-i18n="services_sub" class="text-gray-600 mt-2 text-sm sm:text-base">Tap any of the 14 treatments
+                below to view details and clinical case results.</p>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -181,7 +234,7 @@
                         <p id="activeServiceDesc" class="text-sm text-gray-600 mt-1"></p>
                     </div>
                     <button id="btnBookSelectedService" type="button" data-i18n="btn_book_service"
-                            class="bg-amber-400 text-[#1E083B] font-semibold text-xs sm:text-sm px-4 py-2.5 rounded-xl hover:bg-amber-300 transition">
+                        class="bg-amber-400 text-[#1E083B] font-semibold text-xs sm:text-sm px-4 py-2.5 rounded-xl hover:bg-amber-300 transition">
                         Book This Treatment
                     </button>
                 </div>
@@ -194,10 +247,13 @@
     <!-- Who We Are (Dynamic DB Section) -->
     <section id="whoWeAreSection" class="py-14 bg-white border-y border-purple-100">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <span data-i18n="about_badge" class="text-xs font-bold uppercase tracking-widest text-purple-700">About Benew®</span>
+            <span data-i18n="about_badge" class="text-xs font-bold uppercase tracking-widest text-purple-700">About
+                Benew®</span>
             <h2 id="whoWeAreTitle" class="text-3xl font-serif-display font-bold text-[#1E083B] mt-2"></h2>
             <p id="whoWeAreSubtitle" class="text-purple-700 font-medium mt-2"></p>
-            <p id="whoWeAreBody" class="mt-5 text-gray-600 leading-relaxed text-base sm:text-lg max-w-3xl mx-auto whitespace-pre-line"></p>
+            <p id="whoWeAreBody"
+                class="mt-5 text-gray-600 leading-relaxed text-base sm:text-lg max-w-3xl mx-auto whitespace-pre-line">
+            </p>
         </div>
     </section>
 
@@ -205,36 +261,53 @@
     <footer id="footerSection" class="bg-benew-gradient text-white py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-                <img src="{{ asset('images/benew-logo-white.png') }}" alt="Benew® — Be New To Be Fine" width="712" height="248" loading="lazy" class="h-12 w-auto object-contain mb-4">
-                <p data-i18n="footer_tagline" class="text-purple-200 text-sm">Be New To Be Fine — Dental Treatments &amp; Plastic Surgery.</p>
+                <img src="{{ asset('images/benew-logo-white.png') }}" alt="Benew® — Be New To Be Fine" width="712"
+                    height="248" loading="lazy" class="h-12 w-auto object-contain mb-4">
+                <p data-i18n="footer_tagline" class="text-purple-200 text-sm">Be New To Be Fine — Dental Treatments
+                    &amp; Plastic Surgery.</p>
             </div>
             <div class="space-y-2.5 text-sm">
-                <h3 data-i18n="footer_contact" class="font-bold text-amber-300 uppercase tracking-wider text-xs mb-3">Contact &amp; Location</h3>
-                <p>Phone: <a href="tel:{{ preg_replace('/\s+/', '', $clinic['phone']) }}" class="underline hover:text-amber-300" dir="ltr">{{ $clinic['phone'] }}</a></p>
-                <p>Location: <a href="{{ $clinic['maps_url'] }}" target="_blank" rel="noopener" id="clinicAddressLink" class="underline hover:text-amber-300">{{ $clinic['address_en'] }}</a></p>
+                <h3 data-i18n="footer_contact" class="font-bold text-amber-300 uppercase tracking-wider text-xs mb-3">
+                    Contact &amp; Location</h3>
+                <p>Phone: <a href="tel:{{ preg_replace('/\s+/', '', $clinic['phone']) }}"
+                        class="underline hover:text-amber-300" dir="ltr">{{ $clinic['phone'] }}</a></p>
+                <p>Location: <a href="{{ $clinic['maps_url'] }}" target="_blank" rel="noopener" id="clinicAddressLink"
+                        class="underline hover:text-amber-300">{{ $clinic['address_en'] }}</a></p>
             </div>
             <div>
-                <h3 data-i18n="footer_follow" class="font-bold text-amber-300 uppercase tracking-wider text-xs mb-3">Follow Us</h3>
+                <h3 data-i18n="footer_follow" class="font-bold text-amber-300 uppercase tracking-wider text-xs mb-3">
+                    Follow Us</h3>
                 <div class="flex flex-wrap gap-2.5 text-xs">
-                    <a href="{{ $clinic['social']['instagram'] }}" target="_blank" class="bg-white/10 px-3 py-2 rounded-lg hover:bg-white/20">Instagram</a>
-                    <a href="{{ $clinic['social']['facebook'] }}" target="_blank" class="bg-white/10 px-3 py-2 rounded-lg hover:bg-white/20">Facebook</a>
-                    <a href="{{ $clinic['social']['tiktok'] }}" target="_blank" class="bg-white/10 px-3 py-2 rounded-lg hover:bg-white/20">TikTok</a>
-                    <a href="{{ $clinic['social']['youtube'] }}" target="_blank" class="bg-white/10 px-3 py-2 rounded-lg hover:bg-white/20">YouTube</a>
-                    <a href="https://wa.me/{{ $clinic['whatsapp'] }}" target="_blank" class="bg-emerald-500 text-white px-3 py-2 rounded-lg hover:bg-emerald-400">WhatsApp</a>
+                    <a href="{{ $clinic['social']['instagram'] }}" target="_blank"
+                        class="bg-white/10 px-3 py-2 rounded-lg hover:bg-white/20">Instagram</a>
+                    <a href="{{ $clinic['social']['facebook'] }}" target="_blank"
+                        class="bg-white/10 px-3 py-2 rounded-lg hover:bg-white/20">Facebook</a>
+                    <a href="{{ $clinic['social']['tiktok'] }}" target="_blank"
+                        class="bg-white/10 px-3 py-2 rounded-lg hover:bg-white/20">TikTok</a>
+                    <a href="{{ $clinic['social']['youtube'] }}" target="_blank"
+                        class="bg-white/10 px-3 py-2 rounded-lg hover:bg-white/20">YouTube</a>
+                    <a href="https://wa.me/{{ $clinic['whatsapp'] }}" target="_blank"
+                        class="bg-emerald-500 text-white px-3 py-2 rounded-lg hover:bg-emerald-400">WhatsApp</a>
                 </div>
             </div>
         </div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-purple-300">
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-purple-300">
             <span data-i18n="footer_copy">&copy; {{ date('Y') }} Benew® Clinic. All rights reserved.</span>
-            <span>Powered by <a href="https://threedigitsoftware.com" target="_blank" rel="noopener noreferrer" class="text-amber-300 hover:underline font-semibold">Threedigitsoftware</a></span>
+            <span>Powered by <a href="https://threedigitsoftware.com" target="_blank" rel="noopener noreferrer"
+                    class="text-amber-300 hover:underline font-semibold">Threedigitsoftware</a></span>
         </div>
     </footer>
 
     <!-- Sticky Mobile Bottom CTA Bar -->
-    <div class="md:hidden fixed bottom-0 inset-x-0 bg-white border-t border-gray-200 px-3 py-2 flex gap-2 z-40 shadow-lg">
-        <a href="tel:{{ preg_replace('/\s+/', '', $clinic['phone']) }}" data-i18n="mob_call" class="flex-1 text-center bg-gray-100 text-[#1E083B] font-semibold text-xs py-2.5 rounded-lg">Call</a>
-        <a href="https://wa.me/{{ $clinic['whatsapp'] }}" target="_blank" data-i18n="mob_wa" class="flex-1 text-center bg-emerald-500 text-white font-semibold text-xs py-2.5 rounded-lg">WhatsApp</a>
-        <a href="#heroFormCard" data-i18n="mob_book" class="flex-1 text-center bg-[#2B0C54] text-white font-semibold text-xs py-2.5 rounded-lg">Book Now</a>
+    <div
+        class="md:hidden fixed bottom-0 inset-x-0 bg-white border-t border-gray-200 px-3 py-2 flex gap-2 z-40 shadow-lg">
+        <a href="tel:{{ preg_replace('/\s+/', '', $clinic['phone']) }}" data-i18n="mob_call"
+            class="flex-1 text-center bg-gray-100 text-[#1E083B] font-semibold text-xs py-2.5 rounded-lg">Call</a>
+        <a href="https://wa.me/{{ $clinic['whatsapp'] }}" target="_blank" data-i18n="mob_wa"
+            class="flex-1 text-center bg-emerald-500 text-white font-semibold text-xs py-2.5 rounded-lg">WhatsApp</a>
+        <a href="#heroFormCard" data-i18n="mob_book"
+            class="flex-1 text-center bg-[#2B0C54] text-white font-semibold text-xs py-2.5 rounded-lg">Book Now</a>
     </div>
 
     <script>
@@ -474,9 +547,8 @@
             const gal = document.getElementById('serviceGalleryGrid');
             gal.innerHTML = '';
             if (!s.case_images || !s.case_images.length) {
-                gal.innerHTML = `<div class="col-span-full rounded-xl bg-[#F6F3FA] p-6 text-center text-sm text-gray-500">${
-                    currentLang === 'ar' ? 'لا توجد صور حالات بعد لهذه الخدمة.' : 'No case photos uploaded yet for this treatment.'
-                }</div>`;
+                gal.innerHTML = `<div class="col-span-full rounded-xl bg-[#F6F3FA] p-6 text-center text-sm text-gray-500">${currentLang === 'ar' ? 'لا توجد صور حالات بعد لهذه الخدمة.' : 'No case photos uploaded yet for this treatment.'
+                    }</div>`;
                 return;
             }
             s.case_images.forEach(img => {
@@ -542,4 +614,5 @@
         applyTranslations();
     </script>
 </body>
+
 </html>
